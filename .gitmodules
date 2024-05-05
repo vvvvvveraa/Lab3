@@ -1,0 +1,3 @@
+[submodule "lab2-submodule"]
+	path = lab2-submodule
+	url = https://github.com/vvvvvveraa/lab-2.git
