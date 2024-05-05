@@ -18,20 +18,32 @@ def get_employees_by_age_range(age_lower_limit, age_upper_limit):
 
     return result
 
-def calculate_average_salary():
-    total = 0
-    average = 0
+def calculate_average_salary(employee_salary):
+    # Initialize total_salary
+    total_salary = 0
 
-    #add your implementation to calculate here
+    # Iterate through the list of employee data dictionaries
+    for employee in employee_salary:
+        # Add the salary of the current employee to the total
+        total_salary += employee["salary"]
 
+    # Calculate the average salary
+    if len(employee_salary) > 0:
+        average_salary = total_salary / len(employee_salary)
+    else:
+        # If employee_data list is empty, return 0 as the average salary
+        average_salary = 0
 
-    return average
+    # Return the average salary
+    return average_salary
 
 def get_employees_by_dept(department):
     result = []
 
-    # Add your implementation from here
-
+    # Iterate through the employee data and add employees from the specified department to the result list
+    for employee in employee_data:
+        if employee["department"].lower() == department.lower():
+            result.append(employee)
 
     return result
 
@@ -64,22 +76,18 @@ def display_main_menu():
 
     if option == '1':
         display_all_records()
-
     elif option == '2':
-        average_salary = calculate_average_salary()
-        print("Average salary = " + str(average_salary))
-
+        average_salary = calculate_average_salary(employee_data)
+        print(f"Average salary: ${average_salary:.2f}")
     elif option == '3':
-        age_lower_limit = input("age (Lower Limit) = ")
-        age_upper_limit = input("age (Uper Limit) = ")
-        employee_info = get_employees_by_age_range(age_lower_limit, age_upper_limit)
-        display_records(employee_info)
-
-
+        age_lower = int(input("Enter age lower limit: "))
+        age_upper = int(input("Enter age upper limit: "))
+        employees_in_age_range = get_employees_by_age_range(age_lower, age_upper)
+        display_records(employees_in_age_range)
     elif option == '4':
-        department = input("Name of Department = ")
-        employee_info = get_employees_by_dept(department)
-        display_records(employee_info)
+        department = input("Enter department name: ")
+        employees_in_department = get_employees_by_dept(department)
+        display_records(employees_in_department)
 
     elif option == 'Q':
         quit()
