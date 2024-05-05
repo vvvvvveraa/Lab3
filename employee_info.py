@@ -23,13 +23,13 @@ def calculate_average_salary(employee_salary):
     total_salary = 0
 
     # Iterate through the list of employee data dictionaries
-    for employee in employee_salary:
+    for employee in employee_data:
         # Add the salary of the current employee to the total
         total_salary += employee["salary"]
 
     # Calculate the average salary
-    if len(employee_salary) > 0:
-        average_salary = total_salary / len(employee_salary)
+    if len(employee_data) > 0:
+        average_salary = total_salary / len(employee_data)
     else:
         # If employee_data list is empty, return 0 as the average salary
         average_salary = 0
@@ -42,6 +42,7 @@ def get_employees_by_dept(department):
 
     # Iterate through the employee data and add employees from the specified department to the result list
     for employee in employee_data:
+        # Check if the employee's department matches the specified department (case-insensitive)
         if employee["department"].lower() == department.lower():
             result.append(employee)
 
